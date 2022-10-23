@@ -1,0 +1,23 @@
+{
+  "name": "@hexlet/code",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "My very first project on Hexlet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+  	"brain-games": "bin/brain-games.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mccman1519/backend-project-44.git"
+  },
+  "author": "mccman1519",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mccman1519/backend-project-44/issues"
+  },
+  "homepage": "https://github.com/mccman1519/backend-project-44#readme"
+}
