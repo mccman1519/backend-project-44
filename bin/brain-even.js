@@ -18,7 +18,6 @@ const brainEven = () => {
 		const msgIncorrectAnswer = `'${playerAnswer}' is wrong answer ;(. Correct answer was ${correctAnswer}`;
 
 		if (playerAnswer !== 'yes' && playerAnswer !== 'no') {
-			console.log('NOT_YESNO');
 			console.log(msgIncorrectAnswer);
 			return;
 		}
