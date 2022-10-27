@@ -1,34 +1,58 @@
 import readlineSync from 'readline-sync';
 
-export const game = {
+export const engine = {
 	playerName: '<noname>',
 	currentQuiz: null,
-	currentAnswer: null,
+	playerAnswer: null,
 	correctAnswer: null,
+	
 	goal() {
 		console.log(`Congratulations, ${this.playerName}!`);
 	},
+	
 	question() {
 		console.log(`Question: ${this.currentQuiz}`);
+		this.playerAnswer = readlineSync.question('Your answer: ');
 	},
-};
+	
+	greeting() {
+		console.log('Welcome to Brain Games!');
+		this.playerName = readlineSync.question('May I have your name?: ');
+  	console.log(`Hello, ${this.playerName}!`);
+	},
+	
+	isCorrect() {
+		return this.playerAnswer === this.correctAnswer;
+	},
+	
+	checkAnswer() {
+		if (this.isCorrect()) {
+			console.log('Correct!');
+			return true;
+		}
+	
+		console.log(`'${this.playerAnswer}' is wrong answer ;(. Correct answer was '${this.correctAnswer}'.`);
+		return false;
+	},
 
-export const gameGreeting = () => {
-	console.log('Welcome to Brain Games!');
-	const playerName = readlineSync.question('May I have your name?: ');
-  console.log(`Hello, ${playerName}!`);
+	play(game, roundsCount = 3) {
+		this.greeting();
+		console.log(game.textRule);
 
-  return playerName;
-};
+		for (let i = 0; i < roundsCount; i += 1) {
+			this.currentQuiz = game.quiz();
+			this.correctAnswer = game.expected();
 
-export const isCorrect = (expected, playerAnswer) => {
-	if (playerAnswer === expected) {
-		console.log('Correct!');
-		return true;
+			this.question();
+
+			if (!this.checkAnswer()) {
+				console.log(`Let's try again, ${this.playerName}`);
+				return;
+			}
+		}
+
+		this.goal();
 	}
-
-	console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was '${expected}'`);
-	return false;
 };
 
 export const nRandLimit = (limit) => Math.floor(Math.random() * limit);
