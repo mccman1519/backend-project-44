@@ -1,40 +1,25 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
-import { gameGreeting } from '../src/index.js';
+import { game, gameGreeting, isCorrect, nRandLimit } from '../src/index.js';
 
 const brainEven = () => {
-/*
-	console.log('Welcome to Brain Games!');
-	const playerName = readlineSync.question('May I have your name?: ');
-  console.log(`Hello, ${playerName}!`);
-*/
-	// TODO: перезаписать аскинему, поскольку изменился порядок вывода условия.
-	const playerName = gameGreeting('Answer "yes" if the number is even, otherwise answer "no".');
+	game.playerName = gameGreeting();
+	console.log('Answer \'yes\' if the number is even, otherwise answer \'no\'.');
 
 	for (let i = 0; i < 3; i += 1) {
-		const RANGE_LIMIT = 1000;
-		const rand = Math.floor(Math.random() * RANGE_LIMIT);
-		
-		console.log(`Question: ${rand}`);
+		game.currentQuiz = nRandLimit(1000);
+		game.correctAnswer = (game.currentQuiz % 2 === 0) ? 'yes' : 'no';
 
-		const correctAnswer = (rand % 2 === 0) ? 'yes' : 'no';
-		const playerAnswer = readlineSync.question('Your answer: ');
-		const msgIncorrectAnswer = `'${playerAnswer}' is wrong answer ;(. Correct answer was ${correctAnswer}`;
+		console.log(`Question: ${game.currentQuiz}`);
+		game.playerAnswer = readlineSync.question('Your answer: ');
 
-		if (playerAnswer !== 'yes' && playerAnswer !== 'no') {
-			console.log(msgIncorrectAnswer);
-			return;
-		}
-
-		if (playerAnswer === correctAnswer) {
-			console.log('Correct!');
-		} else {
-			console.log(msgIncorrectAnswer);
+		if (!isCorrect(game.correctAnswer, game.playerAnswer)) {
+			console.log(`Let's try again, ${game.playerName}`);
 			return;
 		}
 	}
 
-	console.log(`Congratulations, ${playerName}!`);
+	game.goal();
 };
 
 brainEven();
