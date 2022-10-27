@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
-import { game, gameGreeting, isCorrect, nRandLimit } from '../src/index.js';
+import {
+	game, gameGreeting, isCorrect, nRandLimit,
+} from '../src/index.js';
 
 const brainEven = () => {
 	game.playerName = gameGreeting();
@@ -10,7 +12,7 @@ const brainEven = () => {
 		game.currentQuiz = nRandLimit(1000);
 		game.correctAnswer = (game.currentQuiz % 2 === 0) ? 'yes' : 'no';
 
-		console.log(`Question: ${game.currentQuiz}`);
+		game.question();
 		game.playerAnswer = readlineSync.question('Your answer: ');
 
 		if (!isCorrect(game.correctAnswer, game.playerAnswer)) {
