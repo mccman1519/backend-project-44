@@ -8,12 +8,16 @@ export default {
     return `${this.curQuiz[0]} ${this.curQuiz[2]} ${this.curQuiz[1]}`;
   },
   expected() {
+    let result;
     switch (this.curQuiz[2]) {
-    case '+': return (this.curQuiz[0] + this.curQuiz[1]).toString();
-    case '-': return (this.curQuiz[0] - this.curQuiz[1]).toString();
-    case '*': return (this.curQuiz[0] * this.curQuiz[1]).toString();
+    case '+': result = (this.curQuiz[0] + this.curQuiz[1]).toString();
+      break;
+    case '-': result = (this.curQuiz[0] - this.curQuiz[1]).toString();
+      break;
+    case '*': result = (this.curQuiz[0] * this.curQuiz[1]).toString();
+      break;
     default: break;
     }
-    return undefined;
+    return result;
   },
 };
