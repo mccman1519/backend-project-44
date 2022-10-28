@@ -7,7 +7,7 @@ export default {
     const length = nRandLimit(12, 5);
     const seq = [nRandLimit(100)];
     const delta = nRandLimit(10, 1);
-    const hidden = nRandLimit(length);
+    const hidden = nRandLimit(length - 1);
 
     for (let i = 0; i < length; i += 1) {
       const nextItem = seq[i] + delta;
