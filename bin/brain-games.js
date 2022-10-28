@@ -1,4 +1,5 @@
 #!/usr/bin/env node
-import { engine } from '../src/index.js';
 
-engine.play(null);
+import greeting from '../src/cli.js';
+
+greeting();
