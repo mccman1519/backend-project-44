@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { engine } from '../src/index.js';
-import brainProgression from '../src/games/progression.js';
+import { play } from '../src/index.js';
+import { textRule, quiz, expected } from '../src/games/progression.js';
 
-engine.play(brainProgression);
+play({ textRule, quiz, expected });

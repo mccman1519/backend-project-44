@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { engine } from '../src/index.js';
-import brainGcd from '../src/games/gcd.js';
+import { play } from '../src/index.js';
+import { textRule, quiz, expected } from '../src/games/gcd.js';
 
-engine.play(brainGcd);
+play({ textRule, quiz, expected });

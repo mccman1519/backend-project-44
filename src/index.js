@@ -1,63 +1,57 @@
 import readlineSync from 'readline-sync';
 
-export const engine = {
-  playerName: '<noname>',
-  currentQuiz: null,
-  playerAnswer: null,
-  correctAnswer: null,
+let playerName = '<noname>';
+let currentQuiz = null;
+let playerAnswer = null;
+let correctAnswer = null;
 
-  goal() {
-    console.log(`Congratulations, ${this.playerName}!`);
-  },
+const goal = () => console.log(`Congratulations, ${playerName}!`);
 
-  question() {
-    console.log(`Question: ${this.currentQuiz}`);
-    this.playerAnswer = readlineSync.question('Your answer: ');
-  },
+const question = () => {
+  console.log(`Question: ${currentQuiz}`);
+  playerAnswer = readlineSync.question('Your answer: ');
+};
 
-  greeting() {
-    console.log('Welcome to the Brain Games!');
-    this.playerName = readlineSync.question('May I have your name?: ');
-    console.log(`Hello, ${this.playerName}!`);
-  },
+const greeting = () => {
+  console.log('Welcome to the Brain Games!');
+  playerName = readlineSync.question('May I have your name?: ');
+  console.log(`Hello, ${playerName}!`);
+};
 
-  isCorrect() {
-    return this.playerAnswer === this.correctAnswer;
-  },
+const isCorrect = () => playerAnswer === correctAnswer;
 
-  checkAnswer() {
-    if (this.isCorrect()) {
-      console.log('Correct!');
-      return true;
-    }
+const checkAnswer = () => {
+  if (isCorrect()) {
+    console.log('Correct!');
+    return true;
+  }
 
-    console.log(`'${this.playerAnswer}' is wrong answer ;(. Correct answer was '${this.correctAnswer}'.`);
-    return false;
-  },
+  console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+  return false;
+};
 
-  play(game, roundsCount = 3) {
-    this.greeting();
+export const play = (game, roundsCount = 3) => {
+  greeting();
 
-    if (!game) {
+  if (!game) {
+    return;
+  }
+
+  console.log(game.textRule);
+
+  for (let i = 0; i < roundsCount; i += 1) {
+    currentQuiz = game.quiz();
+    correctAnswer = game.expected();
+
+    question();
+
+    if (!checkAnswer()) {
+      console.log(`Let's try again, ${playerName}!`);
       return;
     }
+  }
 
-    console.log(game.textRule);
-
-    for (let i = 0; i < roundsCount; i += 1) {
-      this.currentQuiz = game.quiz();
-      this.correctAnswer = game.expected();
-
-      this.question();
-
-      if (!this.checkAnswer()) {
-        console.log(`Let's try again, ${this.playerName}!`);
-        return;
-      }
-    }
-
-    this.goal();
-  },
+  goal();
 };
 
 export const nRandLimit = (max, min = 0) => Math.floor(Math.random() * (max - min + 1)) + min;

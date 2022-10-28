@@ -1,24 +1,24 @@
 import { nRandLimit } from '../index.js';
 
-export default {
-  textRule: 'What number is missing in the progression?',
-  curQuiz: null,
-  quiz() {
-    const length = nRandLimit(12, 5);
-    const seq = [nRandLimit(100)];
-    const delta = nRandLimit(10, 1);
-    const hidden = nRandLimit(length - 1);
+const textRule = 'What number is missing in the progression?';
+let curQuiz = null;
 
-    for (let i = 0; i < length; i += 1) {
-      const nextItem = seq[i] + delta;
-      seq.push(nextItem);
-    }
+const quiz = () => {
+  const length = nRandLimit(12, 5);
+  const seq = [nRandLimit(100)];
+  const delta = nRandLimit(10, 1);
+  const hidden = nRandLimit(length - 1);
 
-    this.curQuiz = seq[hidden];
+  for (let i = 0; i < length; i += 1) {
+    const nextItem = seq[i] + delta;
+    seq.push(nextItem);
+  }
 
-    return seq.reduce((acc, item) => `${acc} ${item === this.curQuiz ? '..' : item}`, '').trim();
-  },
-  expected() {
-    return this.curQuiz.toString();
-  },
+  curQuiz = seq[hidden];
+
+  return seq.reduce((acc, item) => `${acc} ${item === curQuiz ? '..' : item}`, '').trim();
 };
+
+const expected = () => curQuiz.toString();
+
+export { textRule, quiz, expected };
