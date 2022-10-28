@@ -1,9 +1,9 @@
 import { nRandLimit } from '../index.js';
 
 export default {
-	textRule: 'What number is missing in the progression?',
-	curQuiz: null,
-	quiz() {
+  textRule: 'What number is missing in the progression?',
+  curQuiz: null,
+  quiz() {
     const length = nRandLimit(12, 5);
     const seq = [nRandLimit(100)];
     const delta = nRandLimit(10, 1);
@@ -16,9 +16,9 @@ export default {
 
     this.curQuiz = seq[hidden];
 
-		return seq.reduce((acc, item)=>acc+` ${item === this.curQuiz ? '..' : item}`);
-	},
-	expected() {
+    return seq.reduce((acc, item) => `${acc} ${item === this.curQuiz ? '..' : item}`);
+  },
+  expected() {
     return this.curQuiz.toString();
-	},
+  },
 };

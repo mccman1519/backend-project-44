@@ -2,6 +2,6 @@
 import greeting from '../src/cli.js';
 
 export default () => {
-	console.log('Welcome to Brain Games!');
-	greeting();
-}
+  console.log('Welcome to Brain Games!');
+  greeting();
+};
