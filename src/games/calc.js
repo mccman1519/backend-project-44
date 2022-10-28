@@ -12,13 +12,13 @@ const quiz = () => {
 const expected = () => {
   let result;
   switch (curQuiz[2]) {
-  case '+': result = (curQuiz[0] + curQuiz[1]).toString();
-    break;
-  case '-': result = (curQuiz[0] - curQuiz[1]).toString();
-    break;
-  case '*': result = (curQuiz[0] * curQuiz[1]).toString();
-    break;
-  default: break;
+    case '+': result = (curQuiz[0] + curQuiz[1]).toString();
+      break;
+    case '-': result = (curQuiz[0] - curQuiz[1]).toString();
+      break;
+    case '*': result = (curQuiz[0] * curQuiz[1]).toString();
+      break;
+    default: break;
   }
   return result;
 };
