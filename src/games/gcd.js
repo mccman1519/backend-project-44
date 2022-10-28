@@ -4,7 +4,7 @@ export default {
 	textRule: 'Find the greatest common divisor of given numbers.',
 	curQuiz: null,
 	quiz() {
-    this.curQuiz = [nRandLimit(100), nRandLimit(100)];
+    this.curQuiz = [nRandLimit(100, 1), nRandLimit(100, 1)];
 		return `${this.curQuiz[0]} and ${this.curQuiz[1]}`;
 	},
 	expected() {
