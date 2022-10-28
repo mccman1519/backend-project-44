@@ -51,7 +51,7 @@ export const engine = {
       this.question();
 
       if (!this.checkAnswer()) {
-        console.log(`Let's try again, ${this.playerName}`);
+        console.log(`Let's try again, ${this.playerName}!`);
         return;
       }
     }
