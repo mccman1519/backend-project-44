@@ -4,7 +4,7 @@ export default {
   textRule: 'What is the result of the expression?',
   curQuiz: null,
   quiz() {
-    this.curQuiz = [nRandLimit(10), nRandLimit(10), '+-*'[nRandLimit(3)]];
+    this.curQuiz = [nRandLimit(10), nRandLimit(10), '+-*'[nRandLimit(2)]];
     return `${this.curQuiz[0]} ${this.curQuiz[2]} ${this.curQuiz[1]}`;
   },
   expected() {
