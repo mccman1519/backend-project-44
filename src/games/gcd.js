@@ -5,7 +5,7 @@ export default {
   curQuiz: null,
   quiz() {
     this.curQuiz = [nRandLimit(100, 1), nRandLimit(100, 1)];
-    return `${this.curQuiz[0]} and ${this.curQuiz[1]}`;
+    return `${this.curQuiz[0]} ${this.curQuiz[1]}`;
   },
   expected() {
     const [a, b] = this.curQuiz;
