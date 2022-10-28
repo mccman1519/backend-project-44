@@ -1,7 +1,4 @@
 #!/usr/bin/env node
-import greeting from '../src/cli.js';
+import { engine } from '../src/index.js';
 
-export default () => {
-  console.log('Welcome to Brain Games!');
-  greeting();
-};
+engine.play(null);

@@ -37,6 +37,11 @@ export const engine = {
 
   play(game, roundsCount = 3) {
     this.greeting();
+
+    if (!game) {
+      return;
+    }
+
     console.log(game.textRule);
 
     for (let i = 0; i < roundsCount; i += 1) {
