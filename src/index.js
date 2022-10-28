@@ -16,7 +16,7 @@ export const engine = {
   },
 
   greeting() {
-    console.log('Welcome to Brain Games!');
+    console.log('Welcome to the Brain Games!');
     this.playerName = readlineSync.question('May I have your name?: ');
     console.log(`Hello, ${this.playerName}!`);
   },
