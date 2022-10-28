@@ -16,7 +16,7 @@ export default {
 
     this.curQuiz = seq[hidden];
 
-    return seq.reduce((acc, item) => `${acc} ${item === this.curQuiz ? '..' : item}`);
+    return seq.reduce((acc, item) => `${acc} ${item === this.curQuiz ? '..' : item}`, '').trim();
   },
   expected() {
     return this.curQuiz.toString();
