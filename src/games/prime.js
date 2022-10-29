@@ -9,6 +9,9 @@ const quiz = () => {
 };
 
 const expected = () => {
+  if (curQuiz < 2) {
+  	return 'no';
+  }
   const sqrt = Math.floor(Math.sqrt(curQuiz));
   for (let i = 2; i <= sqrt; i += 1) {
     if (curQuiz % i === 0) {
